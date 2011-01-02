@@ -1,0 +1,5 @@
+<!ENTITY ContextBySenders.label "Select the mails from same senders">
+<!ENTITY ContextByRecipients.label "Select the mails from same recipients">
+<!ENTITY ContextByRecipientsTo.label "Look in to">
+<!ENTITY ContextByRecipientsCc.label "Look in cc">
+<!ENTITY ContextByRecipientsToCc.label "Look in to and cc">

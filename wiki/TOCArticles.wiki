@@ -1,8 +1,0 @@
-  * [presentation Presentation]
-  * [gettingStarted Getting Started]
-    * [setup Setup Gather the sender]
-    * [gatherTheRecipients Gather the senders]
-    * [gatherTheRecipients Gather the recipients]
-  * [build Build Gather the senders]
-  * [thunderbirdAPI Annexe A : Thunderbird's API]
-  * [Suggestions Annexe B : Propose new features]

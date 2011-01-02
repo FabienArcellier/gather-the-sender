@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  - Copyright (c) 2009-2010 Fabien Arcellier
+  - Copyright (c) 2009 Fabien Arcellier
   -
   - Permission to use, copy, modify, and distribute this software for any
   - purpose with or without fee is hereby granted, provided that the above
@@ -16,42 +16,19 @@
   - -->
 <?xml-stylesheet href="chrome://gatherthesenders/skin/overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://gatherthesenders/locale/gatherthesenders.dtd">
-<overlay 
-  id="GatherTheSenders-Overlay"
+<overlay id="gatherthesenders-overlay"
   xmlns:nc="http://home.netscape.com/NC-rdf#"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  
+
   <script src="gatherTheSenders.js"></script>
-  <stringbundleset id="stringbundleset">
-    <stringbundle 
-      id="GatherTheSenders-Strings"
-      src="chrome://gatherthesenders/locale/gatherthesenders.properties" />
-  </stringbundleset>
   
-  <!--
-  Overlay on the context popup menu
-  -->
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="gatherthesenders-strings"
+    src="chrome://gatherthesenders/locale/gatherthesenders.properties" />
+  </stringbundleset>
   <menupopup id="mailContext">
-    <menuitem 
-      id="GatherTheSenders-BySenders" 
-      label="&ContextBySenders.label;" 
-      oncommand="gatherTheSenders.selectAllMsgFromSameSenders()" />
-    <menu id="GatherTheSenders-ByRecipients" label="&ContextByRecipients.label;">
-      <menupopup>
-        <menuitem 
-          id="GatherTheSenders-ByRecipientsTo" 
-          label="&ContextByRecipientsTo.label;" 
-          oncommand="gatherTheSenders.selectAllMsgFromSameRecipients()" />
-        <menuitem 
-          id="GatherTheSenders-ByRecipientsCc" 
-          label="&ContextByRecipientsCc.label;" 
-          oncommand="gatherTheSenders.selectAllMsgFromSameRecipients()" />
-        <menuitem 
-          id="GatherTheSenders-ByRecipientsToCc" 
-          label="&ContextByRecipientsToCc.label;" 
-          oncommand="gatherTheSenders.selectAllMsgFromSameRecipients()" />
-      </menupopup>
-    </menu>
     <menuseparator />
+    <menuitem id="gatherthesenders-Menu" label="&gatherthesendersMenu.label;" oncommand="gatherTheSenders.selectAllMsgFromSameSenders()" />
+    <menuitem id="gatherthesenders-recipients-Menu" label="&gatherthesendersGatherrecipientsMenu.label;" oncommand="gatherTheSenders.selectAllMsgFromSameRecipients()" />
   </menupopup>
 </overlay>

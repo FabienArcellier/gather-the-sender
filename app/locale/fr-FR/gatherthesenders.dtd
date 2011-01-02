@@ -1,5 +1,2 @@
-<!ENTITY ContextBySenders.label "Selectionner les mails des memes expediteurs">
-<!ENTITY ContextByRecipients.label "Selectionner les mails des memes destinataires">
-<!ENTITY ContextByRecipientsTo.label "Chercher dans A:">
-<!ENTITY ContextByRecipientsCc.label "Chercher dans Cc:">
-<!ENTITY ContextByRecipientsToCc.label "Chercher dans A: et Cc:">
+<!ENTITY gatherthesendersMenu.label "Selectionner les mails des memes expediteurs">
+<!ENTITY gatherthesendersGatherrecipientsMenu.label "Selectionner les mails des memes destinataires">

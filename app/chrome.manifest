@@ -1,5 +1,6 @@
 content	gatherthesenders	content/
 locale	gatherthesenders	en-US	locale/en-US/
 locale	gatherthesenders	fr-FR	locale/fr-FR/
+locale	gatherthesenders	de-DE	locale/de-DE/
 skin	gatherthesenders	classic/1.0	skin/
 overlay	chrome://messenger/content/messenger.xul	chrome://gatherthesenders/content/gatherTheSendersMenuOverlay.xul appversion>=3

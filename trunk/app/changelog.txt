@@ -1,8 +1,9 @@
-* 1.3.0 *
-- Add 3 options for Gather the recipients (To:, Cc:, To&Cc:)
-- Move menu separator after the options
+* 1.2.2 *
+- Add the German translation de-DE (Thanks to Marcus Barkhahn)
 
 * 1.2.1 *
+- Add 3 options for Gather the recipients (To:, Cc:, To&Cc:)
+- Move menu separator after the options
 - Add variables {$VERSION} and {$DEBUG} that are preprocessed when the application is built
 - Rename skin/icon.png to skin/icon_32_32.png
 - Rename gatherTheSenders.common.js in gatherTheSenders.js

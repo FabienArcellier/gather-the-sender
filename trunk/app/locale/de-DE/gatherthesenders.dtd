@@ -1,5 +1,5 @@
 <!ENTITY ContextBySenders.label "Mails vom gleichem Absender markieren">
-<!ENTITY ContextByRecipients.label "Mails des gleichem Empfängers markieren">
+<!ENTITY ContextByRecipients.label "Mails des gleichem Empfangers markieren">
 <!ENTITY ContextByRecipientsTo.label "in An nachschauen">
 <!ENTITY ContextByRecipientsCc.label "in CC nachschauen">
-<!ENTITY ContextByRecipientsToCc.label "An & CC einbeziehen">
+<!ENTITY ContextByRecipientsToCc.label "An and CC einbeziehen">

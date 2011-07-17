@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ * Build for the thunderbird extension Gather The Sender
+ *
+ * Gather the sender is open source application, we should
+ * control the code quality before to release this application.
+ * We have two main target : build and debug
+ * # Debug : We copy every file in the extension thunderbird directory
+ *   to test the extension immediately
+ * # Build : We package the xpi file using Zip algorithm. We will upload
+ *   on the mozilla extension repository
+ *
+ * LICENSE: This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @author        Fabien Arcellier <fabien_arcellier@yahoo.fr>
+ * @license       http://www.gnu.org/licenses/lgpl-3.0.txt LGPL
+-->
+
+<project name="Gather the senders" basedir="../.." default="debug">
+  <property name="VERSION" value="1.2.3" />
+  <property name="APP_PATH" value="app" />
+  <property name="RELEASE_PATH" value=".\build" />
+  <property name="DEBUG_PATH" value="D:\Programming\Resources\thunderbird\profils\5.0\extensions" />
+  
+  <!--
+  7-zip is an open source tool available on Windows and Linux
+  You can download it on http://www.7-zip.org/download.html
+  Set the path of your 7-zip installation as value.
+  -->
+  <property name="7ZIP_PATH" value="C:\Program files\7-Zip\7z" />
+  
+  <!--
+    Build a release for Gather the sender.
+    Package an XPI file
+  -->
+  <target name="release" >   
+    <copy todir="${RELEASE_PATH}\gatherthesenders-${VERSION}">
+      <fileset dir="${APP_PATH}">
+        <include name="**/*.js" />
+        <include name="**/*.css" />
+        <include name="**/*.xul" />
+        <include name="**/*.rdf" />      
+        <include name="**/*.dtd" />
+        <include name="**/*.manifest" />
+        <include name="**/*.properties" />
+        <include name="**/*.txt" />
+        <include name="**/*.png" />
+        <exclude name="**/.svn" />
+      </fileset>
+      <filterchain>
+        <replacetokens begintoken="{$" endtoken="}">
+          <token key="VERSION" value="${VERSION}" />
+          <token key="DEBUG" value="false" />
+        </replacetokens>
+      </filterchain>
+    </copy>
+    
+    <echo msg="Package to xpi :" />
+    <exec 
+      command="&quot;${7ZIP_PATH}&quot; a -r -tzip &quot;${RELEASE_PATH}\gatherthesenders-${VERSION}.xpi&quot; &quot;${RELEASE_PATH}\gatherthesenders-${VERSION}\*.*&quot;" 
+      logoutput="true" />
+    <delete dir="${RELEASE_PATH}\gatherthesenders-${VERSION}" />
+  </target>
+  
+  <!--
+    Build a debug version of Gather the sender
+  -->
+  <target name="debug">
+
+    <echo msg="Copy the project files to a work directory :" />
+    <copy todir="${DEBUG_PATH}\gatherthesenders-${VERSION}-debug">
+      <fileset dir="${APP_PATH}">
+        <include name="**/*.js" />
+        <include name="**/*.css" />
+        <include name="**/*.xul" />
+        <include name="**/*.rdf" />      
+        <include name="**/*.dtd" />
+        <include name="**/*.manifest" />
+        <include name="**/*.properties" />
+        <include name="**/*.txt" />
+        <include name="**/*.png" />
+        <exclude name="**/.svn" />
+      </fileset>
+      <filterchain>
+        <replacetokens begintoken="{$" endtoken="}">
+          <token key="VERSION" value="${VERSION}" />
+          <token key="DEBUG" value="true" />
+        </replacetokens>
+      </filterchain>
+    </copy>
+    
+    <echo msg="Syntax validation with jslint :" />
+    <jsllint>
+      <fileset dir="${DEBUG_PATH}\gatherthesenders-${VERSION}-debug">
+        <include name="**/*.js"/>
+      </fileset>
+    </jsllint>
+    
+    <echo msg="Package to a xpi package :" />
+    <exec 
+      command="&quot;${7ZIP_PATH}&quot; a -r -tzip &quot;${DEBUG_PATH}\gatherthesenders-${VERSION}-debug.xpi&quot; &quot;${DEBUG_PATH}\gatherthesenders-${VERSION}-debug\*.*&quot;" 
+      logoutput="true" />
+    
+    <delete dir="${DEBUG_PATH}\gatherthesenders-${VERSION}-debug" />
+  </target>
+  
+  <!--
+  Update your working copy 
+  -->
+  <target name="update">
+    <echo msg="Update changes from the repository to your working copy" />
+    <exec command="svn update" checkreturn="TRUE" logoutput="TRUE" />
+  </target>
+  
+  <!--
+  Commit your working copy to the repository.
+  Calls the task update first.
+  -->
+  <target name="commit" depends="update">
+    <echo msg="Commit changes from your working copy to the repository" />
+    <propertyprompt 
+      propertyName="svn.commit.comment" 
+      defaultValue="Update of GatherTheSender's code"
+      promptText="Enter your comment of svn commit" />
+    <exec 
+      command="svn commit -m &quot;${svn.commit.comment}&quot;" 
+      checkreturn="false" 
+      logoutput="TRUE" />
+  </target>
+  
+</project>

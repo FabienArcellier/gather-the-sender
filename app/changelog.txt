@@ -1,3 +1,6 @@
+* 1.2.3 *
+- Compatible with Thunderbird 5.0
+
 * 1.2.2 *
 - Add the German translation de-DE (Thanks to Marcus Barkhahn)
 

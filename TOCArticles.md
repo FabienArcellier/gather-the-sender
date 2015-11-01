@@ -1,0 +1,8 @@
+  * [Presentation](presentation.md)
+  * [Getting Started](gettingStarted.md)
+    * [Setup Gather the sender](setup.md)
+    * [Gather the senders](gatherTheRecipients.md)
+    * [Gather the recipients](gatherTheRecipients.md)
+  * [Build Gather the senders](build.md)
+  * [Annexe A : Thunderbird's API](thunderbirdAPI.md)
+  * [Annexe B : Propose new features](Suggestions.md)
